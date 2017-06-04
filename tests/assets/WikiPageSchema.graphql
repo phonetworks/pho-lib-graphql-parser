@@ -1,0 +1,17 @@
+type WikiPage @is_a(type: "Object") @extends(type: "Content") {
+  id: ID
+  @revisionable,
+  @chmod(arg: 775),
+  @chown(arg: OWNER),
+  @chgrp(arg: CONTEXT),
+}
+
+type WikiPage2
+        @is_a(type: "Object")
+        @extends(type: "Content")
+        @permissions(chmod: 755,
+                     chown: OWNER,
+                     chgrp: CONTEXT)
+{
+  id: ID
+}

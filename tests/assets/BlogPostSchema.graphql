@@ -1,0 +1,3 @@
+type BlogPost @is_a(type: "Object") @extends(type: "Content") @permissions(mod:"01777" , mask: "00002") {
+  title: String! @constraints(max_length: "255") @setter @getter @index
+}
