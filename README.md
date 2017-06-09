@@ -33,18 +33,18 @@ Then, you can parse it via:
 
 ```php
 $parsed = new Pho\Lib\GraphQL\Parser\Parse("BasicSchema.graphql");
-foreach($parsed as $node) {
-  $node_name = $node->name(); // Basic
-  $implementations = $node->implementations(); // an array with a single element
-  $implementation_name = $node->implementations(0)->name(); // Something
-  $directives = $node->directives(); // no root level directive. But we would have one if it was type Basic @is_a { ...
-  $fields = $node->fields(); // we have three; id, context and user.
-  $field_1["name"] = $node->field(0)->name(); // id
-  $field_1["type"] = $node->field(0)->type(); // ID
-  $field_1["nullable"] = $node->field(0)->nullable(); // false (due to !)
-  $field_3["directives"][0] = $node->field(0)->directive(0)->name(); // the_directive
-  $field_3["directives"][0]["arguments"][0]["name"] = $node->field(0)->directive(0)->name(); // the_argument
-  $field_3["directives"][0]["arguments"][0]["value"] = $node->field(0)->directive(0)->value(); // TheValue 
+foreach($parsed as $entity) {
+  $entity_name = $entity->name(); // Basic
+  $implementations = $entity->implementations(); // an array with a single element
+  $implementation_name = $entity->implementations(0)->name(); // Something
+  $directives = $entity->directives(); // no root level directive. But we would have one if it was type Basic @is_a { ...
+  $fields = $entity->fields(); // we have three; id, context and user.
+  $field_1["name"] = $entity->field(0)->name(); // id
+  $field_1["type"] = $entity->field(0)->type(); // ID
+  $field_1["nullable"] = $entity->field(0)->nullable(); // false (due to !)
+  $field_3["directives"][0] = $entity->field(0)->directive(0)->name(); // the_directive
+  $field_3["directives"][0]["arguments"][0]["name"] = $entity->field(0)->directive(0)->name(); // the_argument
+  $field_3["directives"][0]["arguments"][0]["value"] = $entity->field(0)->directive(0)->value(); // TheValue 
 }
 ```
 Please note, for argument values, we currently support String only.
