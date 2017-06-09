@@ -19,7 +19,7 @@ namespace Pho\Lib\GraphQL\Parser\Definitions;
 trait DirectableTrait {
 
     /**
-     * Returns the node directives
+     * Returns the entity directives
      *
      * @return array An array of Directive objects or an empty array if no directive found.
      */
@@ -41,7 +41,7 @@ trait DirectableTrait {
     }
 
     /**
-     * Retrieves the node directive at given position
+     * Retrieves the entity directive at given position
      *
      * @param int $n The position.
      * 

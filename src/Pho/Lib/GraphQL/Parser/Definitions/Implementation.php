@@ -12,7 +12,7 @@
 namespace Pho\Lib\GraphQL\Parser\Definitions;
 
 /**
- * Nodes implement **Implementations**
+ * Entities implement **Implementations**
  * 
  * @author Emre Sokullu <emre@phonetworks.org>
  */

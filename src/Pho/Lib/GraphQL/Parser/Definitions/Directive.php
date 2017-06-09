@@ -12,7 +12,7 @@
 namespace Pho\Lib\GraphQL\Parser\Definitions;
 
 /**
- * Both nodes and fields may have **Directives**
+ * Both entities and fields may have **Directives**
  * 
  * @author Emre Sokullu <emre@phonetworks.org>
  */

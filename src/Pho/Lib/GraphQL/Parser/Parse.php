@@ -11,12 +11,12 @@
 
 namespace Pho\Lib\GraphQL\Parser;
 
-use Pho\Lib\GraphQL\Parser\Definitions\Node;
+use Pho\Lib\GraphQL\Parser\Definitions\Entity;
 use Generator;
 use GraphQL;
 
 /**
- * Parses GraphQL schema into Pho Node Definition
+ * Parses GraphQL schema into Pho Entity Definition
  * 
  * @author Emre Sokullu <emre@phonetworks.org>
  */
@@ -69,29 +69,29 @@ class Parse extends AbstractDebuggable {
     }
 
     /**
-     * Yields the nodes.
+     * Yields the entities.
      * 
      * Aka definitions in GraphQL lingo.
      *
      * @return \Generator
      */
-    public function nodes(): Generator
+    public function entities(): Generator
     {
         foreach($this->ast["definitions"] as $definition) {
-            yield new Node($definition);
+            yield new Entity($definition);
         }
     }
 
     /**
-     * Fetches a node with given key.
+     * Fetches an entity with given key.
      *
      * @param int $n Key.
      * 
-     * @return Node
+     * @return Entity
      */
-    public function node(int $n): Node
+    public function entity(int $n): Entity
     {
-        return new Node($this->ast["definitions"][$n]);
+        return new Entity($this->ast["definitions"][$n]);
     }
 
 }

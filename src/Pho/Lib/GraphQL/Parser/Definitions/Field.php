@@ -12,7 +12,7 @@
 namespace Pho\Lib\GraphQL\Parser\Definitions;
 
 /**
- * Nodes contain **Fields**
+ * Entities contain **Fields**
  * 
  * @author Emre Sokullu <emre@phonetworks.org>
  */
