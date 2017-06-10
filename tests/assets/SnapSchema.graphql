@@ -1,5 +1,5 @@
-<!-- invalid -->
-<!-- because of no field -->
+# <!-- invalid -->
+# <!-- because of no field -->
 
 type Snap @is_a(type: "Object") @extends(type: "Content") {
   @expirable(in: 60*60*24)

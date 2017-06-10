@@ -1,0 +1,9 @@
+type Basic implements Something, SomethingElse {
+  id: ID!,
+  context: String!
+  user: User
+}
+
+type BasicNoComma implements SomethingNoComma SomethingElseNoComma {
+  id: ID,
+}
