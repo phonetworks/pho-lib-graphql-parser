@@ -25,12 +25,36 @@ class Field extends AbstractDefinition  {
         return ! (isset($this->def["type"]["kind"]) && $this->def["type"]["kind"] == "NonNullType");
     }
 
+    public function list(): bool 
+    {
+        return (
+            isset($this->def["type"]["kind"]) && 
+            (
+                ($this->nullable() && $this->def["type"]["kind"] == "ListType") ||
+                (!$this->nullable() && $this->def["type"]["type"]["kind"] == "ListType")
+            )
+        );
+    }
+
     public function type(): string
     {
-        if(!$this->nullable())
-            return $this->def["type"]["type"]["name"]["value"];
-        else
-            return $this->def["type"]["name"]["value"];
+        if(!$this->nullable()) {
+            if(!$this->list())
+                return $this->def["type"]["type"]["name"]["value"];
+            else
+                return $this->def["type"]["type"]["type"]["name"]["value"];
+        }
+        else {
+            if(!$this->list())
+                return $this->def["type"]["name"]["value"];
+            else
+                return $this->def["type"]["type"]["name"]["value"];
+        }
+    }
+
+    public function native(): bool
+    {
+        return in_array(strtolower($this->type()), ["string", "int", "boolean", "float", "id"]);
     }
 
 }

@@ -1,0 +1,11 @@
+type Listed {
+  field1: [Obj],
+  field2: Obj
+  field3: [Obj]!,
+  field4: Obj!,
+  floatField: Float,
+  intField: Int,
+  idField: [ID],
+  lowercaseStringField: string
+  nonNativeField: nonNative
+}
