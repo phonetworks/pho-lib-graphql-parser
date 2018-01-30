@@ -18,8 +18,8 @@ namespace Pho\Lib\GraphQL\Parser\Exceptions;
  * @author Emre Sokullu <emre@phonetworks.org>
  */
 class InvalidSchemaException extends \Exception {
-    public function __construct(\Exception $e) {
+    public function __construct(string $filename, \Exception $e) {
         parent::__construct();
-        $this->message = sprintf("Invalid schema: %s", $e->message);
+        $this->message = sprintf("Invalid schema with file \"%s\": %s", $filename, $e->message);
     }
 }
