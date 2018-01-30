@@ -52,7 +52,7 @@ class Parse extends AbstractDebuggable {
             $this->ast = $this->parser->parse(file_get_contents($graphql)); 
         }
         catch(\Exception $e) {
-            throw new Exceptions\InvalidSchemaException($e);
+            throw new Exceptions\InvalidSchemaException($graphql, $e);
         }
 
         $this->def = $this->ast; // for Debuggable compatibility
