@@ -45,7 +45,7 @@ Please note, for argument values, we currently support String only.
 
 ## A note on multiple inheritance
 
-This is a pure PHP library. However, you may want to enable C extensions in case you need "multiple inheritance" which is not currently supported
+As of version 3.0, this is a pure PHP library. However, you may want to enable C extensions in case you need "multiple inheritance" which is not currently supported
 in the pure PHP mode.
 
 For multiple inheritance, the following dependencies must be met before installing pho-lib-graphql-parser. Please note, the patches shown must be applied since schema support is still experimental.
