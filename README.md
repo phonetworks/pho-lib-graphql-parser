@@ -2,16 +2,10 @@
 
 A general purpose GraphQL schema parser library in PHP. This library does **not** parse GraphQL queries or responses.
 
-## Dependencies
-
-The following dependencies must be met before installing pho-lib-graphql-parser. Please note, the patches shown must be applied since schema support is still experimental.
-
-1. The [LibGraphQLParser](https://github.com/graphql/libgraphqlparser) library by Facebook. Make sure the experimental schema support is enabled with this [patch](https://github.com/graphql/libgraphqlparser/pull/49/files).
-2. The [graphql-parser-php](https://github.com/dosten/graphql-parser-php) PHP extension. Make sure the experimental schema support is enabled with this [patch](https://github.com/dosten/graphql-parser-php/pull/4/commits/63d9108567a81d4777f031044dbaf65017d7a139).
 
 ## Installation
 
-Once you make sure that all the dependencies are properly satisfied, the recommended way to install pho-lib-graphql-parser is [through composer](https://getcomposer.org/). It's as simple as:
+The recommended way to install pho-lib-graphql-parser is [through composer](https://getcomposer.org/). It's as simple as:
 
 ```bash
 composer require phonetworks/pho-lib-graphql-parser
@@ -48,6 +42,22 @@ foreach($parsed as $entity) {
 }
 ```
 Please note, for argument values, we currently support String only.
+
+## A note on multiple inheritance
+
+This is a pure PHP library. However, you may want to enable C extensions in case you need "multiple inheritance" which is not currently supported
+in the pure PHP mode.
+
+For multiple inheritance, the following dependencies must be met before installing pho-lib-graphql-parser. Please note, the patches shown must be applied since schema support is still experimental.
+
+1. The [LibGraphQLParser](https://github.com/graphql/libgraphqlparser) library by Facebook. Make sure the experimental schema support is enabled with this [patch](https://github.com/graphql/libgraphqlparser/pull/49/files).
+2. The [graphql-parser-php](https://github.com/dosten/graphql-parser-php) PHP extension. Make sure the experimental schema support is enabled with this [patch](https://github.com/dosten/graphql-parser-php/pull/4/commits/63d9108567a81d4777f031044dbaf65017d7a139).
+
+To enable it in the library side, you need to set an environment variable where this program is run as follows:
+
+`LIBGRAPHQL_ON=true`
+
+Once you do that, you may test multiple inheritance by commenting out "return" statements in the tests/SchemaWithMultipleInheritanceTest.php file.
 
 ## License
 

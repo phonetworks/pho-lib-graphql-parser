@@ -18,7 +18,7 @@ namespace Pho\Lib\GraphQL\Parser\Definitions;
  */
 class Directive extends AbstractDefinition  {
 
-    protected $arguments;
+    public $arguments;
 
     public function arguments(): array
     {

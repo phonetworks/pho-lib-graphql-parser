@@ -15,6 +15,8 @@ namespace Pho\Lib\GraphQL\Parser\Exceptions;
 /**
  * Thrown if any of the LibGraphQLParser library or the GraphQL-Parser-PHP extension is missing.
  * 
+ * @deprecated 2.0 No longer in use, because we have a pure PHP fallback.
+ * 
  * @author Emre Sokullu <emre@phonetworks.org>
  */
 class MissingExtensionException extends \Exception {

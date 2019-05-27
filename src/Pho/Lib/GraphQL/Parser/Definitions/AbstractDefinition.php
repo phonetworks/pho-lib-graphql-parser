@@ -57,7 +57,7 @@ abstract class AbstractDefinition extends AbstractDebuggable {
             return $this->$internally;
         }
         $sought = $this->def[$graphql];
-        if(!is_array($sought)) {
+        if(!is_array($sought)||count($sought)==0) {
             $this->$internally = [];
             return [];
         }

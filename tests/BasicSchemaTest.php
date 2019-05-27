@@ -25,6 +25,7 @@ class BasicSchemaTest extends \PHPUnit\Framework\TestCase {
     }
 
     public function testBasicSchema() {
+        
         $this->assertEquals(1, $this->parsed->count());
         $this->assertEquals("Basic", $this->parsed->entity(0)->name());
         $this->assertEquals("Something", $this->parsed->entity(0)->implementations()[0]->name());
