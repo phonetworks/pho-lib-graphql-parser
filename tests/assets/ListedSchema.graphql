@@ -3,6 +3,7 @@ type Listed {
   field2: Obj
   field3: [Obj]!,
   field4: Obj!,
+  
   floatField: Float,
   intField: Int,
   idField: [ID],
