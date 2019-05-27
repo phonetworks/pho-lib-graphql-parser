@@ -12,8 +12,10 @@
 namespace Pho\Lib\GraphQL\Parser;
 
 use Pho\Lib\GraphQL\Parser\Definitions\Entity;
+use GraphQL\Utils\BuildSchema;
+use GraphQL\Utils\AST;
+use GraphQL\Language\Parser;
 use Generator;
-use GraphQL;
 
 /**
  * Parses GraphQL schema into Pho Entity Definition
@@ -21,8 +23,6 @@ use GraphQL;
  * @author Emre Sokullu <emre@phonetworks.org>
  */
 class Parse extends AbstractDebuggable {
-
-    private $parser;
 
     private $ast;
 
@@ -40,16 +40,30 @@ class Parse extends AbstractDebuggable {
         if(!file_exists($graphql)) {
             throw new Exceptions\FileNotFoundException($graphql);
         }
+
+        $contents = \file_get_contents($graphql);
+        $c_ext = boolval(getenv("LIBGRAPHQL_ON"));
+        $parser = null;
+
+        if($c_ext) {
+            try {
+                $parser = new \GraphQL\Parser(); 
+            }
+            catch(\Exception $e) {
+                error_log("Missing C Extensions"); 
+                // don't fail
+                // throw new Exceptions\MissingExtensionException();
+            }
+        }
         
         try {
-            $this->parser = new GraphQL\Parser(); 
-        }
-        catch(\Exception $e) {
-            throw new Exceptions\MissingExtensionException();
-        }
-
-        try {
-            $this->ast = $this->parser->parse(file_get_contents($graphql)); 
+            if(!is_null($parser)) {
+                $this->ast = $parser->parse($contents); 
+            }
+            else {
+                $schema = Parser::parse($contents);
+                $this->ast = AST::toArray($schema);
+            }
         }
         catch(\Exception $e) {
             throw new Exceptions\InvalidSchemaException($graphql, $e);
